@@ -1,0 +1,13 @@
+theme = "catppuccin-macchiato"
+
+font-size = 14
+font-family = "ZedMono NFM Extd Bold"
+
+background-opacity = 0.9
+background-blur-radius = 20
+
+window-padding-x = 10
+window-padding-y = 10
+
+# if on macosx:
+window-vsync = true
