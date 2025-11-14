@@ -6,4 +6,5 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zprofile.post.zsh" ]] && \
     builtin source "${HOME}/Library/Application Support/amazon-q/shell/zprofile.post.zsh"
 
+# This is for brew tooling
 eval "$(/opt/homebrew/bin/brew shellenv)"

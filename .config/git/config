@@ -1,11 +1,8 @@
 [commit]
-	gpgSign = true
+	gpgsign = true
 
 [gpg]
-	format = "openpgp"
-
-[gpg "openpgp"]
-	program = "/opt/homebrew/bin/gpg"
+	program = /opt/homebrew/bin/gpg
 
 [tag]
 	gpgSign = true
@@ -13,4 +10,4 @@
 [user]
 	email = "jarad.dingman@wgu.edu"
 	name = "jarad-dingman"
-	signingKey = "E5B7B6E4D477F160"
+	signingkey = 3FD8FC6E659F2054

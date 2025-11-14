@@ -31,6 +31,8 @@ alias -- lla='eza -la'
 alias -- ls='eza -lSah'
 alias -- lt='eza --tree'
 
+export GPG_TTY=$(tty) # This is to allow signing git commits
+
 eval "$(starship init zsh)"
 
 # Amazon Q post block. Keep at the bottom of this file.
