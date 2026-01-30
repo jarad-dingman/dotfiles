@@ -11,7 +11,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
     git
-    direnv
     zsh-autocomplete
     zsh-autosuggestions
     zsh-syntax-highlighting
