@@ -11,3 +11,5 @@
 	email = "jarad.dingman@wgu.edu"
 	name = "jarad-dingman"
 	signingkey = 3FD8FC6E659F2054
+[init]
+	defaultBranch = main

@@ -4,6 +4,12 @@ palette = "catppuccin_macchiato"
 [aws]
 disabled = true
 
+[python]
+format = 'via [${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[package]
+format = 'is [$version]($style) '
+
 [palettes.catppuccin_macchiato]
 base = "#24273a"
 blue = "#8aadf4"
