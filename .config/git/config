@@ -1,15 +1,6 @@
-[commit]
-	gpgsign = true
-
-[gpg]
-	program = /opt/homebrew/bin/gpg
-
-[tag]
-	gpgSign = true
-
 [user]
-	email = "jarad.dingman@wgu.edu"
-	name = "jarad-dingman"
-	signingkey = 3FD8FC6E659F2054
+	name = jacobsin
+	email = jayrad1996@gmail.com
+
 [init]
 	defaultBranch = main

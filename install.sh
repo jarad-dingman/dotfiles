@@ -3,6 +3,8 @@
 # uncomment if something explodes
 # set -euxo pipefail
 
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Ensure brew is installed
 if ! type "brew" > /dev/null; then
   echo "Installing brew..."
@@ -14,51 +16,49 @@ fi
 
 # Install all applications in the Brewfile
 echo "Installing packages from Brewfile"
-brew bundle install -q
+brew bundle install -q --file="$DOTFILES_DIR/Brewfile"
 
-# Setup zshrc
-if [ -d "/Users/$USER/.oh-my-zsh" ]; then
-    echo "oh-my-zsh has been configured"
-else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ "$1" = "--personal" ]; then
+  echo "Installing personal-machine-only packages from Brewfile.personal"
+  brew bundle install -q --file="$DOTFILES_DIR/Brewfile.personal"
 fi
 
-# install plugins
-echo "Installing plugins for zsh"
-if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ];then
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-else
-    echo "installed zsh-autosuggestions"
-fi
+# zsh plugins (sourced directly by .zshrc from ~/.zsh/plugins, no oh-my-zsh)
+echo "Installing zsh plugins"
+ZSH_PLUGIN_DIR="$HOME/.zsh/plugins"
+mkdir -p "$ZSH_PLUGIN_DIR"
 
-if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ];then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-else
-    echo "installed zsh-syntax-highlighting"
-fi
+clone_plugin() {
+  local name="$1" url="$2"
+  if [ -d "$ZSH_PLUGIN_DIR/$name" ]; then
+    echo "$name already installed"
+  else
+    git clone --depth 1 "$url" "$ZSH_PLUGIN_DIR/$name"
+  fi
+}
 
-if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete" ];then
-    git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+# Just oh-my-zsh's single-file git plugin, not the whole framework
+if [ -f "$ZSH_PLUGIN_DIR/git/git.plugin.zsh" ]; then
+  echo "git plugin already installed"
 else
-    echo "installed zsh-autocomplete"
+  mkdir -p "$ZSH_PLUGIN_DIR/git"
+  curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh \
+    -o "$ZSH_PLUGIN_DIR/git/git.plugin.zsh"
 fi
-
-if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab" ];then
-    git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
-else
-    echo "installed fzf-tab"
-fi
+clone_plugin zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
+clone_plugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
+clone_plugin zsh-autocomplete https://github.com/marlonrichert/zsh-autocomplete.git
 
 echo "Running stow on config files"
-stow -d $PWD -t ~ home
-stow -d $PWD -t ~/.config .config
+stow -d "$DOTFILES_DIR" -t ~ home
+stow -d "$DOTFILES_DIR" -t ~/.config .config
 
 echo "Configure neovim"
-if [ -d "~/.config/nvim" ];then
-    git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
-    rm -rf ~/.config/nvim/.git
-else
+if [ -d "$HOME/.config/nvim" ]; then
     echo "neovim already configured"
+else
+    git clone --depth 1 https://github.com/AstroNvim/template "$HOME/.config/nvim"
+    rm -rf "$HOME/.config/nvim/.git"
 fi
 
-echo "Now it is time to install nix..."
+echo "Done. Run macos/defaults.sh and (with sudo) macos/touchid-sudo.sh to finish macOS system setup."

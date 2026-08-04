@@ -1,0 +1,5 @@
+# Personal-machine-only packages. Not safe for a work machine.
+# Install with: ./install.sh --personal
+
+# Host-based application firewall
+cask "little-snitch"

@@ -6,8 +6,9 @@ font-family = "ZedMono NFM Extd Bold"
 background-opacity = 0.9
 background-blur-radius = 20
 
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 15
+window-padding-y = 15
+window-padding-balance = true
 
 # if on macosx:
 window-vsync = true
