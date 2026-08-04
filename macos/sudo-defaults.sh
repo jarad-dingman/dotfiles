@@ -13,7 +13,7 @@ fi
 
 echo "Touch ID for sudo"
 if ! grep -q pam_tid.so /etc/pam.d/sudo_local 2>/dev/null; then
-  { echo "auth       sufficient     pam_tid.so"; cat /etc/pam.d/sudo_local 2>/dev/null; } > /etc/pam.d/sudo_local.tmp
+  { echo "auth       sufficient     pam_tid.so"; cat /etc/pam.d/sudo_local 2>/dev/null || true; } > /etc/pam.d/sudo_local.tmp
   mv /etc/pam.d/sudo_local.tmp /etc/pam.d/sudo_local
   chmod 644 /etc/pam.d/sudo_local
 else
