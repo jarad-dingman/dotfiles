@@ -21,7 +21,6 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 alias -- cat=bat
-alias -- find=fd
 alias -- vim='nvim'
 alias -- la='eza -a'
 alias -- ll='eza -l'
@@ -36,3 +35,13 @@ eval "$(starship init zsh)"
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
 eval "$(/Users/jarad.dingman/.local/bin/mise activate zsh)"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/jarad.dingman/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# >>> sre-kiro-toolkit secrets >>>
+# Loads MCP server tokens from macOS Keychain into environment variables.
+# Managed by: scripts/setup-secrets.sh — do not edit manually.
+# <<< sre-kiro-toolkit secrets <<<

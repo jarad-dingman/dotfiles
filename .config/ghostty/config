@@ -1,3 +1,5 @@
+custom-shader = ./shaders/cursors/cursor_warp.glsl
+
 theme = "catppuccin-macchiato"
 
 font-size = 14
@@ -11,3 +13,7 @@ window-padding-y = 10
 
 # if on macosx:
 window-vsync = true
+
+macos-titlebar-proxy-icon=hidden
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/icons/catppuccin-macchiato.icns

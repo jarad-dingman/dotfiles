@@ -1,39 +1,61 @@
-format = "$all"
-palette = "catppuccin_macchiato"
+"$schema" = 'https://starship.rs/config-schema.json'
 
-[aws]
-disabled = true
+format = """
+[](#c6a0f6)\
+$directory\
+[](bg:#f38ba8 fg:#c6a0f6)\
+$git_branch\
+$git_status\
+[](bg:#8bd5ca fg:#f38ba8)\
+$golang\
+$nodejs\
+$python\
+$rust\
+[](bg:#fab387 fg:#8bd5ca)\
+$aws\
+[ ](fg:#fab387)\
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+[directory]
+style = "bg:#c6a0f6 fg:#363a4f"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#f38ba8 fg:#363a4f"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#f38ba8 fg:#363a4f"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol ($version) ]($style)'
 
 [python]
-format = 'via [${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = " "
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol $virtualenv ]($style)'
 
-[package]
-format = 'is [$version]($style) '
-
-[palettes.catppuccin_macchiato]
-base = "#24273a"
-blue = "#8aadf4"
-crust = "#181926"
-flamingo = "#f0c6c6"
-green = "#a6da95"
-lavender = "#b7bdf8"
-mantle = "#1e2030"
-maroon = "#ee99a0"
-mauve = "#c6a0f6"
-overlay0 = "#6e738d"
-overlay1 = "#8087a2"
-overlay2 = "#939ab7"
-peach = "#f5a97f"
-pink = "#f5bde6"
-red = "#ed8796"
-rosewater = "#f4dbd6"
-sapphire = "#7dc4e4"
-sky = "#91d7e3"
-subtext0 = "#a5adcb"
-subtext1 = "#b8c0e0"
-surface0 = "#363a4f"
-surface1 = "#494d64"
-surface2 = "#5b6078"
-teal = "#8bd5ca"
-text = "#cad3f5"
-yellow = "#eed49f"
+[aws]
+symbol = ' '
+style = "bg:#fab387 fg:#363a4f"
+format = '[ $symbol ($duration)]($style)'
+disabled = true
