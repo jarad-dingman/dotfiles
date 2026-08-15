@@ -1,11 +1,16 @@
 # ~/.zshrc — hand-rolled, no oh-my-zsh
 # Backup of the previous oh-my-zsh config: ~/zsh-config-backup-20260803/
 
+# Kiro CLI pre block. Keep at the top of this file. Work laptop only.
+if [[ "$(hostname -s)" == "L9HYPTQG2P" ]]; then
+  [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+fi
+
 # ---- environment ------------------------------------------------------
 setopt extended_glob  # needed for the (#qN...) freshness checks below
 
 export LANG=en_US.UTF-8
-export PATH="/Users/jacobsin/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export GPG_TTY=$(tty) # allow signing git commits
 
 ZSH_PLUGIN_DIR="$HOME/.zsh/plugins"
@@ -275,3 +280,20 @@ alias -- ll='eza -l'
 alias -- lla='eza -la'
 alias -- ls='eza -lSah'
 alias -- lt='eza --tree'
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+eval "$(mise activate zsh)"
+
+# Kiro CLI post block. Keep at the bottom of this file. Work laptop only.
+if [[ "$(hostname -s)" == "L9HYPTQG2P" ]]; then
+  [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+  # The following lines have been added by Docker Desktop to enable Docker CLI completions.
+  fpath=("$HOME/.docker/completions" $fpath)
+  autoload -Uz compinit
+  compinit
+  # End of Docker CLI completions
+fi

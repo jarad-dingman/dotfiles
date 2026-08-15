@@ -1,11 +1,61 @@
-# Minimal module set — only what's actually used, instead of starship's
-# default "$all" (every language/cloud/tool detector live simultaneously).
-# Each module below keeps starship's own default styling; this file only
-# controls which modules are evaluated at all.
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
+[](#c6a0f6)\
 $directory\
+[](bg:#f38ba8 fg:#c6a0f6)\
 $git_branch\
 $git_status\
-$cmd_duration\
-$line_break\
-$character"""
+[](bg:#8bd5ca fg:#f38ba8)\
+$golang\
+$nodejs\
+$python\
+$rust\
+[](bg:#fab387 fg:#8bd5ca)\
+$aws\
+[ ](fg:#fab387)\
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+[directory]
+style = "bg:#c6a0f6 fg:#363a4f"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#f38ba8 fg:#363a4f"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#f38ba8 fg:#363a4f"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:#8bd5ca fg:#363a4f"
+format = '[ $symbol $virtualenv ]($style)'
+
+[aws]
+symbol = ' '
+style = "bg:#fab387 fg:#363a4f"
+format = '[ $symbol ($duration)]($style)'
+disabled = true

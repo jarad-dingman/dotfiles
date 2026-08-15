@@ -61,4 +61,17 @@ else
     rm -rf "$HOME/.config/nvim/.git"
 fi
 
-echo "Done. Run macos/defaults.sh and (with sudo) macos/touchid-sudo.sh to finish macOS system setup."
+echo ""
+echo "------------------------------------------------------------"
+echo "MANUAL STEPS REQUIRED"
+echo "------------------------------------------------------------"
+echo "The following tools must be installed manually:"
+echo ""
+echo "  mise  — runtime version manager"
+echo "          https://mise.jdx.dev/getting-started.html"
+echo ""
+echo "  atuin — shell history manager"
+echo "          https://docs.atuin.sh/guide/installation/"
+echo "------------------------------------------------------------"
+echo ""
+echo "Done. Run macos/defaults.sh and (with sudo) macos/sudo-defaults.sh to finish macOS system setup."
