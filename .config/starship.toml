@@ -1,61 +1,92 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+palette = "catppuccin_macchiato"
+
 format = """
-[](#c6a0f6)\
+[](blue)\
 $directory\
-[](bg:#f38ba8 fg:#c6a0f6)\
+[](bg:green fg:blue)\
 $git_branch\
 $git_status\
-[](bg:#8bd5ca fg:#f38ba8)\
+[](bg:yellow fg:green)\
 $golang\
 $nodejs\
 $python\
 $rust\
-[](bg:#fab387 fg:#8bd5ca)\
-$aws\
-[ ](fg:#fab387)\
+[](bg:red fg:yellow)\
+[ ](fg:red)\
 """
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
 [directory]
-style = "bg:#c6a0f6 fg:#363a4f"
+style = "bg:blue fg:surface0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#f38ba8 fg:#363a4f"
+style = "bg:green fg:surface0"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#f38ba8 fg:#363a4f"
+style = "bg:green fg:surface0"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#8bd5ca fg:#363a4f"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:yellow fg:surface0"
+format = '[ $symbol( $version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#8bd5ca fg:#363a4f"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:yellow fg:surface0"
+format = '[ $symbol( $version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#8bd5ca fg:#363a4f"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:yellow fg:surface0"
+format = '[ $symbol( $version) ]($style)'
 
 [python]
 symbol = " "
-style = "bg:#8bd5ca fg:#363a4f"
-format = '[ $symbol $virtualenv ]($style)'
+style = "bg:yellow fg:surface0"
+format = '[ $symbol( $virtualenv) ]($style)'
+# Show the Python segment only when a virtualenv is ACTIVE ($VIRTUAL_ENV set).
+# Keys off the env var, not cwd contents, so it persists into subdirectories
+# and never triggers on a bare .py file. $virtualenv shows the env name.
+detect_extensions = []
+detect_files = []
+detect_folders = []
+detect_env_vars = ["VIRTUAL_ENV"]
 
-[aws]
-symbol = ' '
-style = "bg:#fab387 fg:#363a4f"
-format = '[ $symbol ($duration)]($style)'
-disabled = true
+# Catppuccin Macchiato palette — https://github.com/catppuccin/starship
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"

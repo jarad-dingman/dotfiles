@@ -1,4 +1,10 @@
 Brewfile
+Brewfile.personal
 install.sh
 *.py
 .gitignore
+README.md
+macos
+.kiro
+# Don't stow nested git repos (e.g. ghostty/shaders/cursors)
+\.git

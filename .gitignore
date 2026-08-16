@@ -1,2 +1,4 @@
 home/.aws/config
 symkiller.py
+# Third-party clone (has its own .git); not stowed or tracked here
+.config/ghostty/shaders/cursors/

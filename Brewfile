@@ -1,5 +1,4 @@
 tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git"
-tap "homebrew/bundle"
 # Arduino command-line interface
 brew "arduino-cli"
 # DNS lookup utility (dig) — replaces nix's dnsutils
@@ -52,8 +51,10 @@ brew "tealdeer"
 brew "topgrade"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
 # Tiling window manager (from a third-party tap; removed from homebrew-core)
 brew "asmvik/formulae/yabai"
 # Voice and text chat software

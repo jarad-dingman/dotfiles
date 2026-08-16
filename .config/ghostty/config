@@ -1,7 +1,12 @@
 theme = "catppuccin-macchiato"
 
+# macOS dock/app icon — customizable built-in "ghost" icon.
+# NOTE: custom-style does not accept an .icns path; icons/catppuccin-macchiato.icns
+# must be applied via Finder > Get Info if you want that specific icon.
+macos-icon = custom-style
+
 font-size = 14
-font-family = "ZedMono NFM Extd Bold"
+font-family = "ZedMono NFM"
 
 background-opacity = 0.9
 background-blur-radius = 20
@@ -12,3 +17,11 @@ window-padding-balance = true
 
 # if on macosx:
 window-vsync = true
+
+# Send Option as Alt/Meta so the zsh Alt/Esc word-nav bindings actually fire.
+macos-option-as-alt = true
+
+# quality-of-life
+mouse-hide-while-typing = true
+window-save-state = always
+shell-integration-features = cursor,sudo,title
