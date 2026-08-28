@@ -1,3 +1,7 @@
+
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
 # ~/.zshrc — hand-rolled, no oh-my-zsh
 # Backup of the previous oh-my-zsh config: ~/zsh-config-backup-20260803/
 #
@@ -17,8 +21,7 @@
 
 # Kiro CLI pre block. Keep at the top of this file. Work laptop only.
 if [[ "$(hostname -s)" == "L9HYPTQG2P" ]]; then
-  [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
-fi
+  fi
 
 # ---- environment ------------------------------------------------------
 setopt extended_glob  # needed for the (#qN...) freshness checks below
@@ -288,5 +291,11 @@ source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Kiro CLI post block. Keep at the bottom of this file. Work laptop only.
 if [[ "$(hostname -s)" == "L9HYPTQG2P" ]]; then
-  [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
-fi
+  fi
+
+# Local secrets (not tracked in dotfiles repo)
+[[ -f "${HOME}/.secrets" ]] && source "${HOME}/.secrets"
+
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

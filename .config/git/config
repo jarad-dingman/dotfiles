@@ -1,6 +1,7 @@
 [user]
-	name = jacobsin
-	email = jayrad1996@gmail.com
+	name = Jarad Dingman
+	email = jarad.dingman@wgu.edu
+	signingkey = 3FD8FC6E659F2054
 
 [init]
 	defaultBranch = main
@@ -9,3 +10,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true

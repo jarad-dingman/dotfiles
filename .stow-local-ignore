@@ -8,3 +8,5 @@ macos
 .kiro
 # Don't stow nested git repos (e.g. ghostty/shaders/cursors)
 \.git
+# Never stow the local secrets file
+\.secrets
